@@ -7,8 +7,25 @@ import SwiftUI
 class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
     @ObservedObject var scenario: Scenario
 
-    var railObservers = [AnyCancellable]()
-    var tumblerObservers = [AnyCancellable]()
+    var railSettingsObservers = [AnyCancellable]()
+    var railSelectionObserver: AnyCancellable!
+
+    var railSelectionChanged = false {
+        didSet {
+            if railSelectionChanged {
+                railSettingsChanged = true
+                sceneUpdateRequired = true
+            }
+        }
+    }
+
+    var railSettingsChanged = false {
+        didSet { if railSettingsChanged { sceneUpdateRequired = true } }
+    }
+
+    var tumblerSpriteUpdateRequired = false {
+        didSet { if tumblerSpriteUpdateRequired { sceneUpdateRequired = true } }
+    }
 
     var sceneUpdateRequired = false
 
@@ -25,37 +42,76 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
     }
 
     override func didMove(to view: SKView) {
-        railObservers = scenario.rails.map { $0.$space.sink { _ in self.sceneUpdateRequired = true } }
-        tumblerObservers = scenario.tumblers.map { $0.$space.sink { _ in self.sceneUpdateRequired = true } }
+        railSettingsObservers = scenario.rails.map { $0.$space.sink { _ in self.railSettingsChanged = true } }
 
-        setRailSprite()
-        setTumblerSprite()
+        railSelectionObserver = scenario.$railSelection.sink { _ in self.railSelectionChanged  = true }
+        railSelectionChanged = true
         sceneUpdateRequired = true
     }
 
-    func setRailSprite() {
-        if let rs = railSprite, let name = rs.name, name == scenario.railSelection {
-            return
+    func updateRailSpriteForSettings() {
+        guard railSettingsChanged else { return }
+
+        switch scenario.editingRail.railType {
+        case .circle:
+            railSprite!.setScale(scenario.editingRail.space.radius)
+        case .line:
+            railSprite!.xScale = scenario.editingRail.space.radius
+            railSprite!.yScale = 1.0
         }
 
-        sceneUpdateRequired = true
+        railSprite!.zRotation = scenario.editingRail.space.rotation
+
+        railSettingsChanged = false
+    }
+
+    func updateRailSpriteForSelection() {
+        guard railSelectionChanged else { return }
+
+        switch scenario.editingRail.railType {
+        case .circle: installCircleSprite()
+        case .line: installLineSprite()
+        }
+
+        railSelectionChanged = false
     }
 
     func setTumblerSprite() {
-        if let ts = railSprite, let name = ts.name, name == scenario.shapeSelection {
-            return
-        }
-
-        sceneUpdateRequired = true
+        tumblerSpriteUpdateRequired = false
     }
 
     override func update(_ currentTime: TimeInterval) {
         guard sceneUpdateRequired else { return }
+
+        updateRailSpriteForSelection()
+        updateRailSpriteForSettings()
 
         sceneUpdateRequired = false
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension PixoniaScene {
+    func installCircleSprite() {
+        let sprite = SpritePool.spokeRings.makeSprite()
+        sprite.size = self.size
+        sprite.color = SKColor(Color.pixieborder)
+
+        railSprite?.removeFromParent()
+        railSprite = sprite
+        self.addChild(sprite)
+    }
+
+    func installLineSprite() {
+        let sprite = SpritePool.linesPool.makeSprite()
+        sprite.size = CGSize(width: self.size.width, height: 2.5)
+        sprite.color = SKColor(Color.pixieborder)
+
+        railSprite?.removeFromParent()
+        railSprite = sprite
+        self.addChild(sprite)
     }
 }

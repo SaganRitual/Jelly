@@ -24,7 +24,7 @@ struct ScenarioView: View {
 
             VStack {
                 RailChooser(railSelection: $scenario.railSelection)
-                RailEditor(rail: scenario.editingRail)
+                RailEditor(rail: scenario.editingRail, scenario: scenario)
             }.padding([.top, .bottom])
         }
     }

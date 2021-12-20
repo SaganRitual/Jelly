@@ -57,6 +57,10 @@
 		D4B64461277028D40095BC97 /* Rail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6445F277028D40095BC97 /* Rail.swift */; };
 		D4B64463277029890095BC97 /* RailEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64462277029890095BC97 /* RailEditor.swift */; };
 		D4B64464277029890095BC97 /* RailEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64462277029890095BC97 /* RailEditor.swift */; };
+		D4B64468277083930095BC97 /* SpritePool.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B64466277083930095BC97 /* SpritePool.xcassets */; };
+		D4B64469277083930095BC97 /* SpritePool.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B64466277083930095BC97 /* SpritePool.xcassets */; };
+		D4B6446A277083930095BC97 /* SpritePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64467277083930095BC97 /* SpritePool.swift */; };
+		D4B6446B277083930095BC97 /* SpritePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64467277083930095BC97 /* SpritePool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +92,8 @@
 		D4B6445C2770172D0095BC97 /* UnitCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitCircle.swift; sourceTree = "<group>"; };
 		D4B6445F277028D40095BC97 /* Rail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rail.swift; sourceTree = "<group>"; };
 		D4B64462277029890095BC97 /* RailEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailEditor.swift; sourceTree = "<group>"; };
+		D4B64466277083930095BC97 /* SpritePool.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SpritePool.xcassets; sourceTree = "<group>"; };
+		D4B64467277083930095BC97 /* SpritePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpritePool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,7 @@
 				D4B6443E27700F7A0095BC97 /* Vertexor.swift */,
 				D4B64413276FFBF70095BC97 /* Assets.xcassets */,
 				D4B64416276FFC2A0095BC97 /* Primitives */,
+				D4B64465277083930095BC97 /* SpriteKit */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -172,6 +179,15 @@
 				D4B64419276FFC2A0095BC97 /* YAColor.swift */,
 			);
 			path = Primitives;
+			sourceTree = "<group>";
+		};
+		D4B64465277083930095BC97 /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				D4B64466277083930095BC97 /* SpritePool.xcassets */,
+				D4B64467277083930095BC97 /* SpritePool.swift */,
+			);
+			path = SpriteKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B64468277083930095BC97 /* SpritePool.xcassets in Resources */,
 				D4B64414276FFBF70095BC97 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B64469277083930095BC97 /* SpritePool.xcassets in Resources */,
 				D4B64415276FFBF70095BC97 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +301,7 @@
 				D4B6443C27700C2F0095BC97 /* PixoniaScene.swift in Sources */,
 				D4B6444D2770109B0095BC97 /* TumblerEditor.swift in Sources */,
 				D4B6442A276FFD050095BC97 /* RailChooser.swift in Sources */,
+				D4B6446A277083930095BC97 /* SpritePool.swift in Sources */,
 				D4B6442D27700B1F0095BC97 /* Scenario.swift in Sources */,
 				D4B6441D276FFC2A0095BC97 /* Easer.swift in Sources */,
 				D4B6443327700BB00095BC97 /* ShapeChooser.swift in Sources */,
@@ -314,6 +333,7 @@
 				D4B6443D27700C2F0095BC97 /* PixoniaScene.swift in Sources */,
 				D4B6444E2770109B0095BC97 /* TumblerEditor.swift in Sources */,
 				D4B6442B276FFD050095BC97 /* RailChooser.swift in Sources */,
+				D4B6446B277083930095BC97 /* SpritePool.swift in Sources */,
 				D4B6442E27700B1F0095BC97 /* Scenario.swift in Sources */,
 				D4B6441E276FFC2A0095BC97 /* Easer.swift in Sources */,
 				D4B6443427700BB00095BC97 /* ShapeChooser.swift in Sources */,

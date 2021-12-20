@@ -7,7 +7,8 @@ protocol HasUnitCircleSpace: ObservableObject {
 }
 
 struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
-    @ObservedObject var tumbler: T
+//    @ObservedObject var tumbler: T
+    @ObservedObject var scenario: Scenario
 
     enum Attribute: Int {
         case anchorPointR, anchorPointT, positionR, positionT, radius, rotation
@@ -32,24 +33,24 @@ struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
 
     func bind(to attribute: Attribute) -> Binding<Double> {
         switch attribute {
-        case .anchorPointR: return Binding(get: { tumbler.space.anchorPoint.r }, set: { tumbler.space.anchorPoint.r = $0 })
-        case .anchorPointT: return Binding(get: { tumbler.space.anchorPoint.t }, set: { tumbler.space.anchorPoint.t = $0 })
-        case .positionR:    return Binding(get: { tumbler.space.position.r }, set: { tumbler.space.position.r = $0 })
-        case .positionT:    return Binding(get: { tumbler.space.position.t }, set: { tumbler.space.position.t = $0 })
-        case .radius:       return Binding(get: { tumbler.space.radius }, set: { tumbler.space.radius = $0 })
-        case .rotation:     return Binding(get: { tumbler.space.rotation }, set: { tumbler.space.rotation = $0 })
+        case .anchorPointR: return Binding(get: { scenario.editingRail.space.anchorPoint.r }, set: { scenario.editingRail.space.anchorPoint.r = $0 })
+        case .anchorPointT: return Binding(get: { scenario.editingRail.space.anchorPoint.t }, set: { scenario.editingRail.space.anchorPoint.t = $0 })
+        case .positionR:    return Binding(get: { scenario.editingRail.space.position.r }, set: { scenario.editingRail.space.position.r = $0 })
+        case .positionT:    return Binding(get: { scenario.editingRail.space.position.t }, set: { scenario.editingRail.space.position.t = $0 })
+        case .radius:       return Binding(get: { scenario.editingRail.space.radius }, set: { scenario.editingRail.space.radius = $0 })
+        case .rotation:     return Binding(get: { scenario.editingRail.space.rotation }, set: { scenario.editingRail.space.rotation = $0 })
         }
     }
 
     var valueView: String {
         let s: Double
         switch attribute {
-        case .anchorPointR: s = tumbler.space.anchorPoint.r
-        case .anchorPointT: s = tumbler.space.anchorPoint.t
-        case .positionR: s = tumbler.space.position.r
-        case .positionT: s = tumbler.space.position.t
-        case .radius: s = tumbler.space.radius
-        case .rotation: s = tumbler.space.rotation
+        case .anchorPointR: s = scenario.editingRail.space.anchorPoint.r
+        case .anchorPointT: s = scenario.editingRail.space.anchorPoint.t
+        case .positionR: s = scenario.editingRail.space.position.r
+        case .positionT: s = scenario.editingRail.space.position.t
+        case .radius: s = scenario.editingRail.space.radius
+        case .rotation: s = scenario.editingRail.space.rotation
         }
 
         return s.asString(decimals: 4)
