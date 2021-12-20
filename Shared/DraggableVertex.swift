@@ -1,11 +1,5 @@
 import SwiftUI
 
-// $49 diag
-// $99 for quick fix
-// $80 beyond that
-// parts extra
-// 10:30 - 252 E Ave Ste B
-
 struct DraggableVertex: View, DraggableVertexProtocol {
     enum VertexType {
         case rotationalCenter, vertex

@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct TumblerEditorView: View {
+struct TumblerEditor: View {
     @ObservedObject var tumbler: Tumbler
     @ObservedObject var vertexor: Vertexor
 

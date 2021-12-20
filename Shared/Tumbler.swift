@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-class Tumbler: ObservableObject {
+class Tumbler: HasUnitCircleSpace {
     @Published var space = UCSpace.unit
 
     @Published var vertexor: Vertexor

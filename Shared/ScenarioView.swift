@@ -6,20 +6,15 @@ struct ScenarioView: View {
     @ObservedObject var pixoniaScene: PixoniaScene
     @ObservedObject var scenario: Scenario
 
-    @State private var pathSelection = "minus"
-    @State private var shapeSelection = "circle"
-
-    var pathSelectionIndex: Int {
-        PathChooser.symbolNames.firstIndex(of: pathSelection)!
-    }
-
-    var shapeSelectionIndex: Int {
-        ShapeChooser.symbolNames.firstIndex(of: shapeSelection)!
-    }
+//    @Binding var pathSelection: String
+//    @Binding var shapeSelection: String
 
     init(pixoniaScene: PixoniaScene, scenario: Scenario) {
         _pixoniaScene = ObservedObject(wrappedValue: pixoniaScene)
         _scenario = ObservedObject(wrappedValue: scenario)
+
+//        _pathSelection = Binding(projectedValue: scenario.$pathSelection)
+//        _shapeSelection = Binding(projectedValue: scenario.$shapeSelection)
     }
 
 //    func getIsRectangle(_ vertexor: Vertexor) -> Bool {
@@ -33,16 +28,14 @@ struct ScenarioView: View {
     var body: some View {
         VStack {
             VStack {
-                ShapeChooser(shapeSelection: $shapeSelection)
-                    .onChange(of: shapeSelection) { _ in scenario.editingIndex = shapeSelectionIndex }
+                ShapeChooser(shapeSelection: $scenario.shapeSelection)
 
-                PathChooser(pathSelection: $pathSelection)
-                    .onChange(of: pathSelection) { _ in scenario.editingPathIndex = pathSelectionIndex }
+                RailChooser(railSelection: $scenario.railSelection)
 
-                TumblerConfiguratorView(
+                TumblerConfigurator(
                     scenario: scenario,
-                    tumbler: scenario.tumblers[shapeSelectionIndex],
-                    vertexor: scenario.tumblers[shapeSelectionIndex].vertexor
+                    tumbler: scenario.editingTumbler,
+                    vertexor: scenario.editingTumbler.vertexor
                 )
 
                 PixoniaView(scene: pixoniaScene)

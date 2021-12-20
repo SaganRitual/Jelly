@@ -3,14 +3,12 @@
 import SwiftUI
 
 class Scenario: ObservableObject {
-    @Published var editingIndex = 3
-    @Published var editingPathIndex = 1
-    @Published var tumblerScale = 0.5
-    @Published var tumblerZRotation = Double.tau / 4
-    @Published var tumblerAnchorRadius = 0.0
-    @Published var tumblerAnchorTheta = 0.0
+    @Published var railSelection = "minus"
+    @Published var shapeSelection = "circle"
 
-    var editingTumbler: Tumbler { tumblers[editingIndex] }
+    @Published var rails: [Rail] = [
+        Rail(.line), Rail(.circle)
+    ]
 
     @Published var tumblers: [Tumbler] = [
         Tumbler(.ellipse(0)),
@@ -25,4 +23,12 @@ class Scenario: ObservableObject {
         Tumbler(.ngon(12)),
         Tumbler(.ngon(20))
     ]
+
+    var editingRail: Rail {
+        rails[RailChooser.indexOf(railSelection)]
+    }
+
+    var editingTumbler: Tumbler {
+        tumblers[ShapeChooser.indexOf(shapeSelection)]
+    }
 }

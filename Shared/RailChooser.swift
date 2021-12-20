@@ -2,20 +2,24 @@
 
 import SwiftUI
 
-struct PathChooser: View {
-    enum PathClass { case circle, line }
+struct RailChooser: View {
+    enum RailClass { case circle, line }
 
     static var symbolNames: [String] = [
         "minus", "circle"
     ]
 
-    @Binding var pathSelection: String
+    static func indexOf(_ symbolName: String) -> Int {
+        symbolNames.firstIndex(of: symbolName)!
+    }
+
+    @Binding var railSelection: String
 
     var body: some View {
-        HStack(spacing: 5) {
+        HStack(spacing: 25) {
             Image(systemName: "circle")
 
-            Picker("Path", selection: $pathSelection) {
+            Picker("Rail", selection: $railSelection) {
                 ForEach(Self.symbolNames, id: \.self) {
                     Image(systemName: $0).tag($0)
                 }

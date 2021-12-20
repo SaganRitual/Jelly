@@ -2,8 +2,13 @@
 
 import SwiftUI
 
-struct TumblerAttributeSlider: View {
-    @ObservedObject var tumbler: Tumbler
+protocol HasUnitCircleSpace: ObservableObject {
+    var space: UCSpace { get set }
+}
+
+struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
+    @ObservedObject var tumbler: T
+
     let attribute: Attribute
     let label: String
     let range: ClosedRange<Double>
@@ -34,12 +39,18 @@ struct TumblerAttributeSlider: View {
         case .rotation: s = tumbler.space.rotation
         }
 
-        return s.asString(decimals: 6, fixedWidth: 10)
+        return s.asString(decimals: 4)
     }
 
     var body: some View {
-        HStack(spacing: 150) {
-            Text("\(label) \(valueView)")
+        HStack() {
+            HStack {
+                Text("\(label)")
+                Spacer()
+                Text("\(valueView)")
+            }
+            .padding(.leading)
+            .frame(width: 200)
 
             Slider(
                 value: bind(to: attribute),
@@ -47,5 +58,22 @@ struct TumblerAttributeSlider: View {
                 label: {}
             )
         }.font(.body.monospaced())
+    }
+}
+
+struct Previews_TumblerAttributeSlider_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            TumblerAttributeSlider(
+                tumbler: Tumbler(.ellipse(0)),
+                attribute: .radius, label: "Scale",
+                range: (-.tau)...(.tau)
+            )
+            TumblerAttributeSlider(
+                tumbler: Tumbler(.ellipse(0)),
+                attribute: .rotation, label: "Rotation",
+                range: (-.tau)...(.tau)
+            )
+        }
     }
 }
