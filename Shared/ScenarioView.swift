@@ -17,14 +17,17 @@ struct ScenarioView: View {
                 TumblerEditor(tumbler: scenario.editingTumbler, vertexor: scenario.editingTumbler.vertexor)
                     .frame(width: 150, height: 150)
 
-                ShapeChooser(shapeSelection: $scenario.shapeSelection)
+                VStack {
+                    ShapeChooser(shapeSelection: $scenario.shapeSelection)
+                    TumblerSettingsView(tumbler: scenario.editingTumbler, scenario: scenario)
+                }
             }.padding([.top, .bottom])
 
             PixoniaView(scene: pixoniaScene)
 
             VStack {
                 RailChooser(railSelection: $scenario.railSelection)
-                RailEditor(rail: scenario.editingRail, scenario: scenario)
+                RailSettingsView(rail: scenario.editingRail, scenario: scenario)
             }.padding([.top, .bottom])
         }
     }

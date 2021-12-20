@@ -2,21 +2,21 @@
 
 import SwiftUI
 
-struct RailEditor: View {
+struct RailSettingsView: View {
     @ObservedObject var rail: Rail
     @ObservedObject var scenario: Scenario
 
     var sliders: [TumblerAttributeSlider<Rail>.Attribute] {
         switch rail.railType {
-        case .circle: return [.radius, .rotation, .anchorPointR, .anchorPointT]
-        case .line:   return [.radius, .rotation, .anchorPointR, .anchorPointT]
+        case .circle: return [.radius, .rotation]
+        case .line:   return [.radius, .rotation]
         }
     }
 
     var body: some View {
         VStack {
             ForEach(sliders, id: \.self) { attribute in
-                TumblerAttributeSlider<Rail>(scenario: scenario, attribute: attribute)
+                TumblerAttributeSlider(tumbler: scenario.editingRail, scenario: scenario, attribute: attribute)
             }
         }
     }

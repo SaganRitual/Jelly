@@ -55,12 +55,14 @@
 		D4B6445E2770172D0095BC97 /* UnitCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6445C2770172D0095BC97 /* UnitCircle.swift */; };
 		D4B64460277028D40095BC97 /* Rail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6445F277028D40095BC97 /* Rail.swift */; };
 		D4B64461277028D40095BC97 /* Rail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6445F277028D40095BC97 /* Rail.swift */; };
-		D4B64463277029890095BC97 /* RailEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64462277029890095BC97 /* RailEditor.swift */; };
-		D4B64464277029890095BC97 /* RailEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64462277029890095BC97 /* RailEditor.swift */; };
+		D4B64463277029890095BC97 /* RailSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64462277029890095BC97 /* RailSettingsView.swift */; };
+		D4B64464277029890095BC97 /* RailSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64462277029890095BC97 /* RailSettingsView.swift */; };
 		D4B64468277083930095BC97 /* SpritePool.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B64466277083930095BC97 /* SpritePool.xcassets */; };
 		D4B64469277083930095BC97 /* SpritePool.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B64466277083930095BC97 /* SpritePool.xcassets */; };
 		D4B6446A277083930095BC97 /* SpritePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64467277083930095BC97 /* SpritePool.swift */; };
 		D4B6446B277083930095BC97 /* SpritePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64467277083930095BC97 /* SpritePool.swift */; };
+		D4B6446D277094730095BC97 /* TumblerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6446C277094730095BC97 /* TumblerSettingsView.swift */; };
+		D4B6446E277094730095BC97 /* TumblerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6446C277094730095BC97 /* TumblerSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,9 +93,10 @@
 		D4B64459277016250095BC97 /* TumblerAttributeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblerAttributeSlider.swift; sourceTree = "<group>"; };
 		D4B6445C2770172D0095BC97 /* UnitCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitCircle.swift; sourceTree = "<group>"; };
 		D4B6445F277028D40095BC97 /* Rail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rail.swift; sourceTree = "<group>"; };
-		D4B64462277029890095BC97 /* RailEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailEditor.swift; sourceTree = "<group>"; };
+		D4B64462277029890095BC97 /* RailSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailSettingsView.swift; sourceTree = "<group>"; };
 		D4B64466277083930095BC97 /* SpritePool.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SpritePool.xcassets; sourceTree = "<group>"; };
 		D4B64467277083930095BC97 /* SpritePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpritePool.swift; sourceTree = "<group>"; };
+		D4B6446C277094730095BC97 /* TumblerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerSettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,13 +137,14 @@
 				D4B6443527700BBE0095BC97 /* PixoniaView.swift */,
 				D4B6445F277028D40095BC97 /* Rail.swift */,
 				D4B64429276FFD050095BC97 /* RailChooser.swift */,
-				D4B64462277029890095BC97 /* RailEditor.swift */,
+				D4B64462277029890095BC97 /* RailSettingsView.swift */,
 				D4B6442C27700B1F0095BC97 /* Scenario.swift */,
 				D4B6442F27700B9A0095BC97 /* ScenarioView.swift */,
 				D4B6443227700BB00095BC97 /* ShapeChooser.swift */,
 				D4B644412770100D0095BC97 /* Tumbler.swift */,
 				D4B64459277016250095BC97 /* TumblerAttributeSlider.swift */,
 				D4B644462770109B0095BC97 /* TumblerEditor.swift */,
+				D4B6446C277094730095BC97 /* TumblerSettingsView.swift */,
 				D4B644482770109B0095BC97 /* TumblerStrokeView.swift */,
 				D4B6443E27700F7A0095BC97 /* Vertexor.swift */,
 				D4B64413276FFBF70095BC97 /* Assets.xcassets */,
@@ -297,7 +301,7 @@
 				D4B6443727700BBE0095BC97 /* PixoniaView.swift in Sources */,
 				D4B644422770100D0095BC97 /* Tumbler.swift in Sources */,
 				D4B6443F27700F7A0095BC97 /* Vertexor.swift in Sources */,
-				D4B64463277029890095BC97 /* RailEditor.swift in Sources */,
+				D4B64463277029890095BC97 /* RailSettingsView.swift in Sources */,
 				D4B6443C27700C2F0095BC97 /* PixoniaScene.swift in Sources */,
 				D4B6444D2770109B0095BC97 /* TumblerEditor.swift in Sources */,
 				D4B6442A276FFD050095BC97 /* RailChooser.swift in Sources */,
@@ -309,6 +313,7 @@
 				D4B6441F276FFC2A0095BC97 /* GridPoint.swift in Sources */,
 				D4B64425276FFC2B0095BC97 /* Overload2D.swift in Sources */,
 				D4B64427276FFC2B0095BC97 /* Cbuffer.swift in Sources */,
+				D4B6446D277094730095BC97 /* TumblerSettingsView.swift in Sources */,
 				D4B6445D2770172D0095BC97 /* UnitCircle.swift in Sources */,
 				D4B64421276FFC2B0095BC97 /* YAColor.swift in Sources */,
 				D4B6443027700B9A0095BC97 /* ScenarioView.swift in Sources */,
@@ -329,7 +334,7 @@
 				D4B6443827700BBE0095BC97 /* PixoniaView.swift in Sources */,
 				D4B644432770100D0095BC97 /* Tumbler.swift in Sources */,
 				D4B6444027700F7A0095BC97 /* Vertexor.swift in Sources */,
-				D4B64464277029890095BC97 /* RailEditor.swift in Sources */,
+				D4B64464277029890095BC97 /* RailSettingsView.swift in Sources */,
 				D4B6443D27700C2F0095BC97 /* PixoniaScene.swift in Sources */,
 				D4B6444E2770109B0095BC97 /* TumblerEditor.swift in Sources */,
 				D4B6442B276FFD050095BC97 /* RailChooser.swift in Sources */,
@@ -341,6 +346,7 @@
 				D4B64420276FFC2A0095BC97 /* GridPoint.swift in Sources */,
 				D4B64426276FFC2B0095BC97 /* Overload2D.swift in Sources */,
 				D4B64428276FFC2B0095BC97 /* Cbuffer.swift in Sources */,
+				D4B6446E277094730095BC97 /* TumblerSettingsView.swift in Sources */,
 				D4B6445E2770172D0095BC97 /* UnitCircle.swift in Sources */,
 				D4B64422276FFC2B0095BC97 /* YAColor.swift in Sources */,
 				D4B6443127700B9A0095BC97 /* ScenarioView.swift in Sources */,
