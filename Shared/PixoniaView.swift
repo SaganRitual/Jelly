@@ -9,8 +9,10 @@ struct PixoniaView: View {
     var body: some View {
         SpriteView(
             scene: scene,
+            options: .allowsTransparency,
             debugOptions: [.showsFPS, .showsNodeCount, .showsDrawCount, .showsQuadCount]
         )
+        .background(Color.clear)
         .aspectRatio(1.0, contentMode: .fit)
     }
 }

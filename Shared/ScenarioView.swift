@@ -11,8 +11,6 @@ struct ScenarioView: View {
         _scenario = ObservedObject(wrappedValue: scenario)
     }
 
-    let alternatingContentBackgroundColor = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.04705882353))
-
     var body: some View {
         VStack {
             HStack {
@@ -38,6 +36,5 @@ struct Previews_ScenarioView_Previews: PreviewProvider {
 
     static var previews: some View {
         ScenarioView(pixoniaScene: pixoniaScene, scenario: scenario)
-            .preferredColorScheme(.dark)
     }
 }

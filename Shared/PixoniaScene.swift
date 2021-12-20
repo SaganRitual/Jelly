@@ -21,7 +21,7 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         super.init(size: CGSize(width: 1024, height: 1024))
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.scaleMode = .aspectFit
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = .clear
     }
 
     override func didMove(to view: SKView) {
