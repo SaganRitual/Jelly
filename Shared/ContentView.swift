@@ -3,16 +3,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var pathSelection = "minus"
+    @ObservedObject var pixoniaScene: PixoniaScene
+    @ObservedObject var scenario: Scenario
 
     var body: some View {
-        PathChooser(pathSelection: $pathSelection)
-//            .onChange(of: pathSelection) { _ in scenario.editingPathIndex = pathSelectionIndex }
+        ScenarioView(pixoniaScene: pixoniaScene, scenario: scenario)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    @ObservedObject static var pixoniaScene = PixoniaScene(scenario: _scenario.wrappedValue)
+    @ObservedObject static var scenario = Scenario()
+
     static var previews: some View {
-        ContentView()
+        ContentView(pixoniaScene: pixoniaScene, scenario: scenario)
     }
 }

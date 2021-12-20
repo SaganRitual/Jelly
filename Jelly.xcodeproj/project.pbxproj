@@ -27,6 +27,34 @@
 		D4B64428276FFC2B0095BC97 /* Cbuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6441C276FFC2A0095BC97 /* Cbuffer.swift */; };
 		D4B6442A276FFD050095BC97 /* PathChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64429276FFD050095BC97 /* PathChooser.swift */; };
 		D4B6442B276FFD050095BC97 /* PathChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64429276FFD050095BC97 /* PathChooser.swift */; };
+		D4B6442D27700B1F0095BC97 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6442C27700B1F0095BC97 /* Scenario.swift */; };
+		D4B6442E27700B1F0095BC97 /* Scenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6442C27700B1F0095BC97 /* Scenario.swift */; };
+		D4B6443027700B9A0095BC97 /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6442F27700B9A0095BC97 /* ScenarioView.swift */; };
+		D4B6443127700B9A0095BC97 /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6442F27700B9A0095BC97 /* ScenarioView.swift */; };
+		D4B6443327700BB00095BC97 /* ShapeChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6443227700BB00095BC97 /* ShapeChooser.swift */; };
+		D4B6443427700BB00095BC97 /* ShapeChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6443227700BB00095BC97 /* ShapeChooser.swift */; };
+		D4B6443727700BBE0095BC97 /* PixoniaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6443527700BBE0095BC97 /* PixoniaView.swift */; };
+		D4B6443827700BBE0095BC97 /* PixoniaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6443527700BBE0095BC97 /* PixoniaView.swift */; };
+		D4B6443C27700C2F0095BC97 /* PixoniaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6443B27700C2F0095BC97 /* PixoniaScene.swift */; };
+		D4B6443D27700C2F0095BC97 /* PixoniaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6443B27700C2F0095BC97 /* PixoniaScene.swift */; };
+		D4B6443F27700F7A0095BC97 /* Vertexor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6443E27700F7A0095BC97 /* Vertexor.swift */; };
+		D4B6444027700F7A0095BC97 /* Vertexor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6443E27700F7A0095BC97 /* Vertexor.swift */; };
+		D4B644422770100D0095BC97 /* Tumbler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644412770100D0095BC97 /* Tumbler.swift */; };
+		D4B644432770100D0095BC97 /* Tumbler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644412770100D0095BC97 /* Tumbler.swift */; };
+		D4B6444B2770109B0095BC97 /* TumblerConfiguratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644452770109B0095BC97 /* TumblerConfiguratorView.swift */; };
+		D4B6444C2770109B0095BC97 /* TumblerConfiguratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644452770109B0095BC97 /* TumblerConfiguratorView.swift */; };
+		D4B6444D2770109B0095BC97 /* TumblerEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644462770109B0095BC97 /* TumblerEditorView.swift */; };
+		D4B6444E2770109B0095BC97 /* TumblerEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644462770109B0095BC97 /* TumblerEditorView.swift */; };
+		D4B644512770109B0095BC97 /* TumblerStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644482770109B0095BC97 /* TumblerStrokeView.swift */; };
+		D4B644522770109B0095BC97 /* TumblerStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644482770109B0095BC97 /* TumblerStrokeView.swift */; };
+		D4B64455277011170095BC97 /* DraggableVertexProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64453277011170095BC97 /* DraggableVertexProtocol.swift */; };
+		D4B64456277011170095BC97 /* DraggableVertexProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64453277011170095BC97 /* DraggableVertexProtocol.swift */; };
+		D4B64457277011170095BC97 /* DraggableVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64454277011170095BC97 /* DraggableVertex.swift */; };
+		D4B64458277011170095BC97 /* DraggableVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64454277011170095BC97 /* DraggableVertex.swift */; };
+		D4B6445A277016250095BC97 /* TumblerAttributeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64459277016250095BC97 /* TumblerAttributeSlider.swift */; };
+		D4B6445B277016250095BC97 /* TumblerAttributeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64459277016250095BC97 /* TumblerAttributeSlider.swift */; };
+		D4B6445D2770172D0095BC97 /* UnitCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6445C2770172D0095BC97 /* UnitCircle.swift */; };
+		D4B6445E2770172D0095BC97 /* UnitCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6445C2770172D0095BC97 /* UnitCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +71,20 @@
 		D4B6441B276FFC2A0095BC97 /* Overload2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overload2D.swift; sourceTree = "<group>"; };
 		D4B6441C276FFC2A0095BC97 /* Cbuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cbuffer.swift; sourceTree = "<group>"; };
 		D4B64429276FFD050095BC97 /* PathChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathChooser.swift; sourceTree = "<group>"; };
+		D4B6442C27700B1F0095BC97 /* Scenario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenario.swift; sourceTree = "<group>"; };
+		D4B6442F27700B9A0095BC97 /* ScenarioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
+		D4B6443227700BB00095BC97 /* ShapeChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeChooser.swift; sourceTree = "<group>"; };
+		D4B6443527700BBE0095BC97 /* PixoniaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixoniaView.swift; sourceTree = "<group>"; };
+		D4B6443B27700C2F0095BC97 /* PixoniaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixoniaScene.swift; sourceTree = "<group>"; };
+		D4B6443E27700F7A0095BC97 /* Vertexor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertexor.swift; sourceTree = "<group>"; };
+		D4B644412770100D0095BC97 /* Tumbler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tumbler.swift; sourceTree = "<group>"; };
+		D4B644452770109B0095BC97 /* TumblerConfiguratorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblerConfiguratorView.swift; sourceTree = "<group>"; };
+		D4B644462770109B0095BC97 /* TumblerEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblerEditorView.swift; sourceTree = "<group>"; };
+		D4B644482770109B0095BC97 /* TumblerStrokeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblerStrokeView.swift; sourceTree = "<group>"; };
+		D4B64453277011170095BC97 /* DraggableVertexProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableVertexProtocol.swift; sourceTree = "<group>"; };
+		D4B64454277011170095BC97 /* DraggableVertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableVertex.swift; sourceTree = "<group>"; };
+		D4B64459277016250095BC97 /* TumblerAttributeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblerAttributeSlider.swift; sourceTree = "<group>"; };
+		D4B6445C2770172D0095BC97 /* UnitCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +118,21 @@
 			isa = PBXGroup;
 			children = (
 				D4B643F6276FFBC70095BC97 /* ContentView.swift */,
+				D4B64454277011170095BC97 /* DraggableVertex.swift */,
+				D4B64453277011170095BC97 /* DraggableVertexProtocol.swift */,
 				D4B643F5276FFBC70095BC97 /* JellyApp.swift */,
 				D4B64429276FFD050095BC97 /* PathChooser.swift */,
+				D4B6443B27700C2F0095BC97 /* PixoniaScene.swift */,
+				D4B6443527700BBE0095BC97 /* PixoniaView.swift */,
+				D4B6442C27700B1F0095BC97 /* Scenario.swift */,
+				D4B6442F27700B9A0095BC97 /* ScenarioView.swift */,
+				D4B6443227700BB00095BC97 /* ShapeChooser.swift */,
+				D4B644412770100D0095BC97 /* Tumbler.swift */,
+				D4B64459277016250095BC97 /* TumblerAttributeSlider.swift */,
+				D4B644452770109B0095BC97 /* TumblerConfiguratorView.swift */,
+				D4B644462770109B0095BC97 /* TumblerEditorView.swift */,
+				D4B644482770109B0095BC97 /* TumblerStrokeView.swift */,
+				D4B6443E27700F7A0095BC97 /* Vertexor.swift */,
 				D4B64413276FFBF70095BC97 /* Assets.xcassets */,
 				D4B64416276FFC2A0095BC97 /* Primitives */,
 			);
@@ -109,6 +164,7 @@
 				D4B6441A276FFC2A0095BC97 /* Extensions.swift */,
 				D4B64418276FFC2A0095BC97 /* GridPoint.swift */,
 				D4B6441B276FFC2A0095BC97 /* Overload2D.swift */,
+				D4B6445C2770172D0095BC97 /* UnitCircle.swift */,
 				D4B64419276FFC2A0095BC97 /* YAColor.swift */,
 			);
 			path = Primitives;
@@ -212,15 +268,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B64457277011170095BC97 /* DraggableVertex.swift in Sources */,
 				D4B64407276FFBC80095BC97 /* ContentView.swift in Sources */,
 				D4B64423276FFC2B0095BC97 /* Extensions.swift in Sources */,
+				D4B64455277011170095BC97 /* DraggableVertexProtocol.swift in Sources */,
+				D4B6443727700BBE0095BC97 /* PixoniaView.swift in Sources */,
+				D4B644422770100D0095BC97 /* Tumbler.swift in Sources */,
+				D4B6443F27700F7A0095BC97 /* Vertexor.swift in Sources */,
+				D4B6443C27700C2F0095BC97 /* PixoniaScene.swift in Sources */,
+				D4B6444D2770109B0095BC97 /* TumblerEditorView.swift in Sources */,
 				D4B6442A276FFD050095BC97 /* PathChooser.swift in Sources */,
+				D4B6442D27700B1F0095BC97 /* Scenario.swift in Sources */,
 				D4B6441D276FFC2A0095BC97 /* Easer.swift in Sources */,
+				D4B6443327700BB00095BC97 /* ShapeChooser.swift in Sources */,
+				D4B6444B2770109B0095BC97 /* TumblerConfiguratorView.swift in Sources */,
+				D4B644512770109B0095BC97 /* TumblerStrokeView.swift in Sources */,
 				D4B6441F276FFC2A0095BC97 /* GridPoint.swift in Sources */,
 				D4B64425276FFC2B0095BC97 /* Overload2D.swift in Sources */,
 				D4B64427276FFC2B0095BC97 /* Cbuffer.swift in Sources */,
+				D4B6445D2770172D0095BC97 /* UnitCircle.swift in Sources */,
 				D4B64421276FFC2B0095BC97 /* YAColor.swift in Sources */,
+				D4B6443027700B9A0095BC97 /* ScenarioView.swift in Sources */,
 				D4B64405276FFBC80095BC97 /* JellyApp.swift in Sources */,
+				D4B6445A277016250095BC97 /* TumblerAttributeSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,15 +298,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B64458277011170095BC97 /* DraggableVertex.swift in Sources */,
 				D4B64408276FFBC80095BC97 /* ContentView.swift in Sources */,
 				D4B64424276FFC2B0095BC97 /* Extensions.swift in Sources */,
+				D4B64456277011170095BC97 /* DraggableVertexProtocol.swift in Sources */,
+				D4B6443827700BBE0095BC97 /* PixoniaView.swift in Sources */,
+				D4B644432770100D0095BC97 /* Tumbler.swift in Sources */,
+				D4B6444027700F7A0095BC97 /* Vertexor.swift in Sources */,
+				D4B6443D27700C2F0095BC97 /* PixoniaScene.swift in Sources */,
+				D4B6444E2770109B0095BC97 /* TumblerEditorView.swift in Sources */,
 				D4B6442B276FFD050095BC97 /* PathChooser.swift in Sources */,
+				D4B6442E27700B1F0095BC97 /* Scenario.swift in Sources */,
 				D4B6441E276FFC2A0095BC97 /* Easer.swift in Sources */,
+				D4B6443427700BB00095BC97 /* ShapeChooser.swift in Sources */,
+				D4B6444C2770109B0095BC97 /* TumblerConfiguratorView.swift in Sources */,
+				D4B644522770109B0095BC97 /* TumblerStrokeView.swift in Sources */,
 				D4B64420276FFC2A0095BC97 /* GridPoint.swift in Sources */,
 				D4B64426276FFC2B0095BC97 /* Overload2D.swift in Sources */,
 				D4B64428276FFC2B0095BC97 /* Cbuffer.swift in Sources */,
+				D4B6445E2770172D0095BC97 /* UnitCircle.swift in Sources */,
 				D4B64422276FFC2B0095BC97 /* YAColor.swift in Sources */,
+				D4B6443127700B9A0095BC97 /* ScenarioView.swift in Sources */,
 				D4B64406276FFBC80095BC97 /* JellyApp.swift in Sources */,
+				D4B6445B277016250095BC97 /* TumblerAttributeSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
