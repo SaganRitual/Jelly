@@ -25,6 +25,8 @@
 		D4B64426276FFC2B0095BC97 /* Overload2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6441B276FFC2A0095BC97 /* Overload2D.swift */; };
 		D4B64427276FFC2B0095BC97 /* Cbuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6441C276FFC2A0095BC97 /* Cbuffer.swift */; };
 		D4B64428276FFC2B0095BC97 /* Cbuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6441C276FFC2A0095BC97 /* Cbuffer.swift */; };
+		D4B6442A276FFD050095BC97 /* PathChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64429276FFD050095BC97 /* PathChooser.swift */; };
+		D4B6442B276FFD050095BC97 /* PathChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B64429276FFD050095BC97 /* PathChooser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,7 @@
 		D4B6441A276FFC2A0095BC97 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D4B6441B276FFC2A0095BC97 /* Overload2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Overload2D.swift; sourceTree = "<group>"; };
 		D4B6441C276FFC2A0095BC97 /* Cbuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cbuffer.swift; sourceTree = "<group>"; };
+		D4B64429276FFD050095BC97 /* PathChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathChooser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +75,9 @@
 		D4B643F4276FFBC70095BC97 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D4B643F5276FFBC70095BC97 /* JellyApp.swift */,
 				D4B643F6276FFBC70095BC97 /* ContentView.swift */,
+				D4B643F5276FFBC70095BC97 /* JellyApp.swift */,
+				D4B64429276FFD050095BC97 /* PathChooser.swift */,
 				D4B64413276FFBF70095BC97 /* Assets.xcassets */,
 				D4B64416276FFC2A0095BC97 /* Primitives */,
 			);
@@ -100,12 +104,12 @@
 		D4B64416276FFC2A0095BC97 /* Primitives */ = {
 			isa = PBXGroup;
 			children = (
-				D4B64417276FFC2A0095BC97 /* Easer.swift */,
-				D4B64418276FFC2A0095BC97 /* GridPoint.swift */,
-				D4B64419276FFC2A0095BC97 /* YAColor.swift */,
-				D4B6441A276FFC2A0095BC97 /* Extensions.swift */,
-				D4B6441B276FFC2A0095BC97 /* Overload2D.swift */,
 				D4B6441C276FFC2A0095BC97 /* Cbuffer.swift */,
+				D4B64417276FFC2A0095BC97 /* Easer.swift */,
+				D4B6441A276FFC2A0095BC97 /* Extensions.swift */,
+				D4B64418276FFC2A0095BC97 /* GridPoint.swift */,
+				D4B6441B276FFC2A0095BC97 /* Overload2D.swift */,
+				D4B64419276FFC2A0095BC97 /* YAColor.swift */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
@@ -210,6 +214,7 @@
 			files = (
 				D4B64407276FFBC80095BC97 /* ContentView.swift in Sources */,
 				D4B64423276FFC2B0095BC97 /* Extensions.swift in Sources */,
+				D4B6442A276FFD050095BC97 /* PathChooser.swift in Sources */,
 				D4B6441D276FFC2A0095BC97 /* Easer.swift in Sources */,
 				D4B6441F276FFC2A0095BC97 /* GridPoint.swift in Sources */,
 				D4B64425276FFC2B0095BC97 /* Overload2D.swift in Sources */,
@@ -225,6 +230,7 @@
 			files = (
 				D4B64408276FFBC80095BC97 /* ContentView.swift in Sources */,
 				D4B64424276FFC2B0095BC97 /* Extensions.swift in Sources */,
+				D4B6442B276FFD050095BC97 /* PathChooser.swift in Sources */,
 				D4B6441E276FFC2A0095BC97 /* Easer.swift in Sources */,
 				D4B64420276FFC2A0095BC97 /* GridPoint.swift in Sources */,
 				D4B64426276FFC2B0095BC97 /* Overload2D.swift in Sources */,

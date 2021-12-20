@@ -3,9 +3,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var pathSelection = "minus"
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        PathChooser(pathSelection: $pathSelection)
+//            .onChange(of: pathSelection) { _ in scenario.editingPathIndex = pathSelectionIndex }
     }
 }
 

@@ -9,17 +9,15 @@ import UIKit
 typealias YAColor = UIColor
 #endif
 
-// 🙏 https://stackoverflow.com/users/837499/johnny
-// https://stackoverflow.com/a/65046791/1610473
 extension Color {
     enum BoringSoftware {
-         static let appBackgroundOrSomething = Color("appBackgroundOrSomething")
-         static let pixieBorder = Color("pixieBorder")
-         static let pixieFill = Color("pixieFill")
-         static let royalPurple = Color("royalPurple")
-         static let salmonzilla = Color("salmonzilla")
-         static let tealjeans = Color("tealjeans")
-         static let velvetPresley = Color("velvetPresley")
+        static let crownpurple = #colorLiteral(red: 0.2029999942, green: 0.1280000061, blue: 0.5730000138, alpha: 1)
+        static let pixieborder = #colorLiteral(red: 0, green: 1, blue: 0.6499999762, alpha: 1)
+        static let pixiefill = #colorLiteral(red: 0, green: 0.6848070894, blue: 0.4451245918, alpha: 1)
+        static let salmonzilla = #colorLiteral(red: 1, green: 0.5799999833, blue: 0.7059999704, alpha: 1)
+        static let shizzabrick = #colorLiteral(red: 0.5, green: 0.1949999928, blue: 0.09000000358, alpha: 1)
+        static let tealjeans = #colorLiteral(red: 0.4690000117, green: 0.8590000272, blue: 0.449000001, alpha: 1)
+        static let velvetpresley = #colorLiteral(red: 0.349999994, green: 0.1280000061, blue: 0.5730000138, alpha: 1)
     }
 }
 

@@ -6,10 +6,7 @@ import SwiftUI
 struct JellyApp: App {
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                Color.BoringSoftware.appBackgroundOrSomething
-                ContentView()
-            }
+            ContentView().padding()
         }
     }
 }
