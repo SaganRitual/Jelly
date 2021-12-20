@@ -1,11 +1,9 @@
 import SpriteKit
 
 class SpritePool {
-    static let dotsPool = SpritePool("Markers", "circle-solid", cPreallocate: 100000)
-    static let linesPool = SpritePool("Markers", "line")
-    static let ringsPool = SpritePool("Markers", "circle")
-    static let ringBumpsPool = SpritePool("Markers", "ring-bump")
-    static let rings1024_4 = SpritePool("Markers", "NewRing1024-4")
+    static let dots = SpritePool("Markers", "circle-solid", cPreallocate: 100000)
+    static let lines = SpritePool("Markers", "line-1024-10")
+    static let plainRings = SpritePool("Markers", "NewRing1024-4")
     static let spokeRings = SpritePool("Markers", "SpokeRing1024-4")
 
     let atlas: SKTextureAtlas

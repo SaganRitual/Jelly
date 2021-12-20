@@ -93,7 +93,6 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         case .circle:
             railSprite.setScale(scenario.editingRail.space.radius)
         case .line:
-            railSprite.scale(to: CGSize(width: self.size.width, height: 2.5))
             railSprite.setScale(scenario.editingRail.space.radius)
         }
 
@@ -118,8 +117,7 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
 
         switch scenario.editingTumbler.vertexor.shapeClass {
         case .ngon(0):
-            tumblerSprite.scale(to: CGSize(width: self.size.width, height: 2.5))
-            tumblerSprite.xScale = scenario.editingTumbler.space.radius
+            tumblerSprite.setScale(scenario.editingTumbler.space.radius)
         default:
             assert(false)
         }
@@ -127,8 +125,8 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         tumblerSprite.zRotation = -scenario.editingTumbler.space.rotation
         tumblerSprite.anchorPoint.x = getAnchorX(angle: scenario.editingTumbler.space.rotation)
 
-//        let scaled = railSprite.size.width * getPositionX(angle: scenario.editingTumbler.space.rotation)
-//        tumblerSprite.position.x = scaled
+        let scaled = railSprite.size.width * getPositionX(angle: scenario.editingTumbler.space.rotation)
+        tumblerSprite.position.x = scaled
 
         tumblerSettingsChanged = false
     }
@@ -194,7 +192,6 @@ private extension PixoniaScene {
         sprite.color = SKColor(Color.shizzabrick)
         tumblerSprite?.removeFromParent()
         tumblerSprite = sprite
-        tumblerSprite.size = CGSize(width: self.size.width, height: 2.5)
         railSprite.addChild(sprite)
     }
 
@@ -202,12 +199,12 @@ private extension PixoniaScene {
         let sprite = makeLineSprite()
         railSprite?.removeFromParent()
         railSprite = sprite
-        railSprite.size = CGSize(width: self.size.width, height: 2.5)
+        railSprite.position.y = -self.size.height / 2.0
         self.addChild(sprite)
     }
 
     func makeLineSprite() -> SKSpriteNode {
-        let sprite = SpritePool.linesPool.makeSprite()
+        let sprite = SpritePool.lines.makeSprite()
         sprite.color = SKColor(Color.pixieborder)
         return sprite
     }
