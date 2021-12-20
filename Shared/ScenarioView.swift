@@ -33,11 +33,11 @@ struct ScenarioView: View {
     var body: some View {
         VStack {
             VStack {
-                PathChooser(pathSelection: $pathSelection)
-                    .onChange(of: pathSelection) { _ in scenario.editingPathIndex = pathSelectionIndex }
-
                 ShapeChooser(shapeSelection: $shapeSelection)
                     .onChange(of: shapeSelection) { _ in scenario.editingIndex = shapeSelectionIndex }
+
+                PathChooser(pathSelection: $pathSelection)
+                    .onChange(of: pathSelection) { _ in scenario.editingPathIndex = pathSelectionIndex }
 
                 TumblerConfiguratorView(
                     scenario: scenario,

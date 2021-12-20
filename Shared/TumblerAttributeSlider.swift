@@ -38,7 +38,7 @@ struct TumblerAttributeSlider: View {
     }
 
     var body: some View {
-        HStack {
+        HStack(spacing: 150) {
             Text("\(label) \(valueView)")
 
             Slider(
