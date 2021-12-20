@@ -5,10 +5,17 @@ import SwiftUI
 struct RailEditor: View {
     @ObservedObject var rail: Rail
 
+    var sliders: [TumblerAttributeSlider<Rail>.Attribute] {
+        switch rail.railType {
+        case .circle: return [.radius, .rotation, .anchorPointR, .anchorPointT]
+        case .line:   return [.rotation]
+        }
+    }
+
     var body: some View {
         VStack {
-            if case Rail.RailType.line = rail.railType {
-                TumblerAttributeSlider(tumbler: rail, attribute: .rotation, label: "Rotation", range: (-.tau)...(.tau))
+            ForEach(sliders, id: \.self) { attribute in
+                TumblerAttributeSlider(tumbler: rail, attribute: attribute)
             }
         }
     }

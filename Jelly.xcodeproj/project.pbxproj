@@ -41,8 +41,6 @@
 		D4B6444027700F7A0095BC97 /* Vertexor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6443E27700F7A0095BC97 /* Vertexor.swift */; };
 		D4B644422770100D0095BC97 /* Tumbler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644412770100D0095BC97 /* Tumbler.swift */; };
 		D4B644432770100D0095BC97 /* Tumbler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644412770100D0095BC97 /* Tumbler.swift */; };
-		D4B6444B2770109B0095BC97 /* TumblerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644452770109B0095BC97 /* TumblerConfigurator.swift */; };
-		D4B6444C2770109B0095BC97 /* TumblerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644452770109B0095BC97 /* TumblerConfigurator.swift */; };
 		D4B6444D2770109B0095BC97 /* TumblerEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644462770109B0095BC97 /* TumblerEditor.swift */; };
 		D4B6444E2770109B0095BC97 /* TumblerEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644462770109B0095BC97 /* TumblerEditor.swift */; };
 		D4B644512770109B0095BC97 /* TumblerStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B644482770109B0095BC97 /* TumblerStrokeView.swift */; };
@@ -82,7 +80,6 @@
 		D4B6443B27700C2F0095BC97 /* PixoniaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixoniaScene.swift; sourceTree = "<group>"; };
 		D4B6443E27700F7A0095BC97 /* Vertexor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertexor.swift; sourceTree = "<group>"; };
 		D4B644412770100D0095BC97 /* Tumbler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tumbler.swift; sourceTree = "<group>"; };
-		D4B644452770109B0095BC97 /* TumblerConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblerConfigurator.swift; sourceTree = "<group>"; };
 		D4B644462770109B0095BC97 /* TumblerEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblerEditor.swift; sourceTree = "<group>"; };
 		D4B644482770109B0095BC97 /* TumblerStrokeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblerStrokeView.swift; sourceTree = "<group>"; };
 		D4B64453277011170095BC97 /* DraggableVertexProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableVertexProtocol.swift; sourceTree = "<group>"; };
@@ -137,7 +134,6 @@
 				D4B6443227700BB00095BC97 /* ShapeChooser.swift */,
 				D4B644412770100D0095BC97 /* Tumbler.swift */,
 				D4B64459277016250095BC97 /* TumblerAttributeSlider.swift */,
-				D4B644452770109B0095BC97 /* TumblerConfigurator.swift */,
 				D4B644462770109B0095BC97 /* TumblerEditor.swift */,
 				D4B644482770109B0095BC97 /* TumblerStrokeView.swift */,
 				D4B6443E27700F7A0095BC97 /* Vertexor.swift */,
@@ -290,7 +286,6 @@
 				D4B6442D27700B1F0095BC97 /* Scenario.swift in Sources */,
 				D4B6441D276FFC2A0095BC97 /* Easer.swift in Sources */,
 				D4B6443327700BB00095BC97 /* ShapeChooser.swift in Sources */,
-				D4B6444B2770109B0095BC97 /* TumblerConfigurator.swift in Sources */,
 				D4B644512770109B0095BC97 /* TumblerStrokeView.swift in Sources */,
 				D4B6441F276FFC2A0095BC97 /* GridPoint.swift in Sources */,
 				D4B64425276FFC2B0095BC97 /* Overload2D.swift in Sources */,
@@ -322,7 +317,6 @@
 				D4B6442E27700B1F0095BC97 /* Scenario.swift in Sources */,
 				D4B6441E276FFC2A0095BC97 /* Easer.swift in Sources */,
 				D4B6443427700BB00095BC97 /* ShapeChooser.swift in Sources */,
-				D4B6444C2770109B0095BC97 /* TumblerConfigurator.swift in Sources */,
 				D4B644522770109B0095BC97 /* TumblerStrokeView.swift in Sources */,
 				D4B64420276FFC2A0095BC97 /* GridPoint.swift in Sources */,
 				D4B64426276FFC2B0095BC97 /* Overload2D.swift in Sources */,

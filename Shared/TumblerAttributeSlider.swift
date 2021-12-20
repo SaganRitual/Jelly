@@ -9,13 +9,26 @@ protocol HasUnitCircleSpace: ObservableObject {
 struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
     @ObservedObject var tumbler: T
 
-    let attribute: Attribute
-    let label: String
-    let range: ClosedRange<Double>
-
-    enum Attribute {
+    enum Attribute: Int {
         case anchorPointR, anchorPointT, positionR, positionT, radius, rotation
     }
+
+    let attribute: Attribute
+
+    struct SliderDescriptor {
+        let attribute: Attribute
+        let label: String
+        let range: ClosedRange<Double>
+    }
+
+    var descriptors: [SliderDescriptor] = [
+        SliderDescriptor(attribute: .anchorPointR, label: "Anchor r", range: (-1.0)...(1.0)),
+        SliderDescriptor(attribute: .anchorPointT, label: "Anchor θ", range: (-2.0 * .tau)...(2.0 * .tau)),
+        SliderDescriptor(attribute: .positionR, label: "Position r", range: (-1.0)...(1.0)),
+        SliderDescriptor(attribute: .positionT, label: "Position θ", range: (-2.0 * .tau)...(2.0 * .tau)),
+        SliderDescriptor(attribute: .radius, label: "Scale", range: (-1.0)...(1.0)),
+        SliderDescriptor(attribute: .rotation, label: "Rotation", range: (-2.0 * .tau)...(2.0 * .tau)),
+    ]
 
     func bind(to attribute: Attribute) -> Binding<Double> {
         switch attribute {
@@ -45,7 +58,7 @@ struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
     var body: some View {
         HStack() {
             HStack {
-                Text("\(label)")
+                Text("\(descriptors[attribute.rawValue].label)")
                 Spacer()
                 Text("\(valueView)")
             }
@@ -54,26 +67,9 @@ struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
 
             Slider(
                 value: bind(to: attribute),
-                in: range,
+                in: descriptors[attribute.rawValue].range,
                 label: {}
             )
         }.font(.body.monospaced())
-    }
-}
-
-struct Previews_TumblerAttributeSlider_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            TumblerAttributeSlider(
-                tumbler: Tumbler(.ellipse(0)),
-                attribute: .radius, label: "Scale",
-                range: (-.tau)...(.tau)
-            )
-            TumblerAttributeSlider(
-                tumbler: Tumbler(.ellipse(0)),
-                attribute: .rotation, label: "Rotation",
-                range: (-.tau)...(.tau)
-            )
-        }
     }
 }

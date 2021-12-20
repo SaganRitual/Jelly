@@ -32,11 +32,12 @@ struct ScenarioView: View {
 
                 RailChooser(railSelection: $scenario.railSelection)
 
-                TumblerConfigurator(
-                    scenario: scenario,
-                    tumbler: scenario.editingTumbler,
-                    vertexor: scenario.editingTumbler.vertexor
-                )
+                HStack {
+                    TumblerEditor(tumbler: scenario.editingTumbler, vertexor: scenario.editingTumbler.vertexor)
+                        .frame(width: 150, height: 150)
+
+                    RailEditor(rail: scenario.editingRail)
+                }
 
                 PixoniaView(scene: pixoniaScene)
             }
