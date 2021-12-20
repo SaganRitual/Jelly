@@ -11,6 +11,16 @@ struct PixoniaView: View {
             scene: scene,
             debugOptions: [.showsFPS, .showsNodeCount, .showsDrawCount, .showsQuadCount]
         )
-        .aspectRatio(1.0, contentMode: .fit).padding(.trailing)
+        .aspectRatio(1.0, contentMode: .fit)
+    }
+}
+
+struct Previews_PixoniaView_Previews: PreviewProvider {
+    @ObservedObject static var pixoniaScene = PixoniaScene(scenario: _scenario.wrappedValue)
+    @ObservedObject static var scenario = Scenario()
+
+    static var previews: some View {
+        PixoniaView(scene: pixoniaScene)
+            .preferredColorScheme(.dark)
     }
 }

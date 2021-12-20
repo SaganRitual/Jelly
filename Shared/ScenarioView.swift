@@ -6,41 +6,38 @@ struct ScenarioView: View {
     @ObservedObject var pixoniaScene: PixoniaScene
     @ObservedObject var scenario: Scenario
 
-//    @Binding var pathSelection: String
-//    @Binding var shapeSelection: String
-
     init(pixoniaScene: PixoniaScene, scenario: Scenario) {
         _pixoniaScene = ObservedObject(wrappedValue: pixoniaScene)
         _scenario = ObservedObject(wrappedValue: scenario)
-
-//        _pathSelection = Binding(projectedValue: scenario.$pathSelection)
-//        _shapeSelection = Binding(projectedValue: scenario.$shapeSelection)
     }
 
-//    func getIsRectangle(_ vertexor: Vertexor) -> Bool {
-//        if case let ShapeChooser.ShapeClass.ngon(c) = vertexor.shapeClass, c == 4 {
-//            return true
-//        }
-//
-//        return false
-//    }
+    let alternatingContentBackgroundColor = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.04705882353))
 
     var body: some View {
         VStack {
-            VStack {
+            HStack {
+                TumblerEditor(tumbler: scenario.editingTumbler, vertexor: scenario.editingTumbler.vertexor)
+                    .frame(width: 150, height: 150)
+
                 ShapeChooser(shapeSelection: $scenario.shapeSelection)
+            }.padding([.top, .bottom])
 
+            PixoniaView(scene: pixoniaScene)
+
+            VStack {
                 RailChooser(railSelection: $scenario.railSelection)
-
-                HStack {
-                    TumblerEditor(tumbler: scenario.editingTumbler, vertexor: scenario.editingTumbler.vertexor)
-                        .frame(width: 150, height: 150)
-
-                    RailEditor(rail: scenario.editingRail)
-                }
-
-                PixoniaView(scene: pixoniaScene)
-            }
+                RailEditor(rail: scenario.editingRail)
+            }.padding([.top, .bottom])
         }
+    }
+}
+
+struct Previews_ScenarioView_Previews: PreviewProvider {
+    @ObservedObject static var pixoniaScene = PixoniaScene(scenario: _scenario.wrappedValue)
+    @ObservedObject static var scenario = Scenario()
+
+    static var previews: some View {
+        ScenarioView(pixoniaScene: pixoniaScene, scenario: scenario)
+            .preferredColorScheme(.dark)
     }
 }

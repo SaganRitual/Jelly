@@ -18,13 +18,10 @@ struct ShapeChooser: View {
     @Binding var shapeSelection: String
 
     var body: some View {
-        HStack(spacing: 25) {
-            Image(systemName: "circle.circle")
-            Picker("Shape", selection: $shapeSelection) {
-                ForEach(Self.symbolNames, id: \.self) {
-                    Image(systemName: $0).tag($0)
-                }
-            }.pickerStyle(.segmented)
-        }
+        Picker("Shape", selection: $shapeSelection) {
+            ForEach(Self.symbolNames, id: \.self) {
+                Image(systemName: $0).tag($0)
+            }
+        }.pickerStyle(.segmented)
     }
 }

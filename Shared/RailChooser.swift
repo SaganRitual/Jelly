@@ -16,14 +16,10 @@ struct RailChooser: View {
     @Binding var railSelection: String
 
     var body: some View {
-        HStack(spacing: 25) {
-            Image(systemName: "circle")
-
-            Picker("Rail", selection: $railSelection) {
-                ForEach(Self.symbolNames, id: \.self) {
-                    Image(systemName: $0).tag($0)
-                }
-            }.pickerStyle(.segmented)
-        }
+        Picker("Rail", selection: $railSelection) {
+            ForEach(Self.symbolNames, id: \.self) {
+                Image(systemName: $0).tag($0)
+            }
+        }.pickerStyle(.segmented)
     }
 }
