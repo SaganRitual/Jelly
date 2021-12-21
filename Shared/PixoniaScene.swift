@@ -50,6 +50,9 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
     var railSprite: SKSpriteNode!
     var tumblerSprite: SKSpriteNode!
 
+    var rotationStop: Double!
+    var nextRotationStop: Double { rotationStop! + .pi}
+
     init(scenario: Scenario) {
         _scenario = ObservedObject(wrappedValue: scenario)
 
@@ -105,7 +108,10 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         guard tumblerSelectionChanged else { return }
 
         switch scenario.editingTumbler.vertexor.shapeClass {
-        case .ngon(0): installLineTumblerSprite()
+        case .ngon(0):
+            rotationStop = 0
+            installLineTumblerSprite()
+
         default: assert(false)
         }
 
@@ -123,7 +129,7 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         }
 
         tumblerSprite.zRotation = -scenario.editingTumbler.space.rotation
-        tumblerSprite.anchorPoint.x = getAnchorX(angle: scenario.editingTumbler.space.rotation)
+        setAnchorX()
 
         let scaled = railSprite.size.width * getPositionX(angle: scenario.editingTumbler.space.rotation)
         tumblerSprite.position.x = scaled
@@ -152,25 +158,40 @@ extension Double {
 }
 
 private extension PixoniaScene {
-    func getAnchorX(angle: Double) -> Double {
-        let shifted = angle - .halfPi
-        let truncated = shifted.remainder(dividingBy: .twoPi)
-        let result = ((-.halfPi)..<(.halfPi)).contains(truncated) ? 1.0 : 0.0
-        return result
+    func setAnchorX() {
+        // We're between stops; anchor doesn't change
+        if(rotationStop..<nextRotationStop)
+            .contains(scenario.editingTumbler.space.rotation) { return }
+
+        if abs(scenario.editingTumbler.space.rotation - rotationStop) <
+            abs(scenario.editingTumbler.space.rotation - nextRotationStop) {
+            rotationStop -= .pi
+        } else {
+            rotationStop = nextRotationStop
+        }
+
+        scenario.editingTumbler.space.anchorPoint = UCPoint(
+            r: scenario.editingTumbler.space.anchorPoint.r * -1,
+            t: scenario.editingTumbler.space.anchorPoint.t
+        )
+
+        tumblerSprite.anchorPoint.x = (tumblerSprite.anchorPoint.x == 0.0) ? 1.0 : 0.0
     }
 
     func getPositionX(angle: Double) -> Double {
-        let cWholeStepsPossible = (1.0 / scenario.editingTumbler.space.radius).rounded(.towardZero)
-        let partialStepFraction = abs(1.0 / scenario.editingTumbler.space.radius) - abs(cWholeStepsPossible)
-        let partialStepRotation = partialStepFraction * .pi
-
-        let shifted_ = scenario.editingTumbler.space.rotation - .halfPi
-        let shifted = shifted_ < 0 ? shifted_ - .halfPi : shifted_ + .halfPi
-        let cWholeStepsTaken = (shifted / .pi).rounded(.towardZero)
-
-        if abs(cWholeStepsTaken) < cWholeStepsPossible {
-            return cWholeStepsTaken * scenario.editingTumbler.space.radius
-        }
+//        let cWholeStepsPossible = (1.0 / scenario.editingTumbler.space.radius).rounded(.towardZero)
+//        let partialStepFraction = abs(1.0 / scenario.editingTumbler.space.radius) - abs(cWholeStepsPossible)
+//        let partialStepRotation = partialStepFraction * .pi
+//
+//        let shifted_ = scenario.editingTumbler.space.rotation - .halfPi
+//        let shifted = shifted_ < 0 ? shifted_ - .halfPi : shifted_ + .halfPi
+//        let cWholeStepsTaken = (shifted / .pi).rounded(.towardZero)
+//
+//        print("taken \(cWholeStepsTaken) of \(cWholeStepsPossible)")
+//
+//        if abs(cWholeStepsTaken) < cWholeStepsPossible {
+//            return cWholeStepsTaken * scenario.editingTumbler.space.radius
+//        }
 
         return 0
     }
@@ -188,24 +209,19 @@ private extension PixoniaScene {
     }
 
     func installLineTumblerSprite() {
-        let sprite = makeLineSprite()
+        let sprite = SpritePool.lines.makeSprite()
         sprite.color = SKColor(Color.shizzabrick)
+        sprite.anchorPoint = .anchorDueEast
         tumblerSprite?.removeFromParent()
         tumblerSprite = sprite
         railSprite.addChild(sprite)
     }
 
     func installLineRailSprite() {
-        let sprite = makeLineSprite()
-        railSprite?.removeFromParent()
-        railSprite = sprite
-        railSprite.position.y = -self.size.height / 2.0
-        self.addChild(sprite)
-    }
-
-    func makeLineSprite() -> SKSpriteNode {
         let sprite = SpritePool.lines.makeSprite()
         sprite.color = SKColor(Color.pixieborder)
-        return sprite
+        railSprite?.removeFromParent()
+        railSprite = sprite
+        self.addChild(sprite)
     }
 }
