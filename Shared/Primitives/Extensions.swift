@@ -155,9 +155,11 @@ extension SKSpriteNode {
 extension CGFloat {
     static let tau = CGFloat.pi * 2
 
-    func asString(decimals: Int) -> String {
-        Double(self).asString(decimals: decimals)
+    func asString(decimals: Int, fixedWidth: Int? = nil) -> String {
+        Double(self).asString(decimals: decimals, fixedWidth: fixedWidth)
     }
+
+    func as3() -> String { asString(decimals: 3) }
 }
 
 extension Double {
@@ -169,6 +171,8 @@ extension Double {
         let result = String(format: format, self)
         return result
     }
+
+    func as3() -> String { asString(decimals: 3) }
 }
 
 // 🙏
@@ -184,6 +188,8 @@ extension ClosedRange {
 extension CGPoint {
     static let anchorAtCenter = CGPoint(x: 0.5, y: 0.5)
     static let anchorDueEast = CGPoint(x: 1.0, y: 0.5)
+    static let anchorDueNorth = CGPoint(x: 0.5, y: 1.0)
+    static let anchorDueSouth = CGPoint(x: 0.5, y: 0.0)
     static let anchorDueWest = CGPoint(x: 0.0, y: 0.5)
 
     enum CompactType { case xy, rθ }

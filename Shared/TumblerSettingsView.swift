@@ -8,7 +8,8 @@ struct TumblerSettingsView: View {
 
     var sliders: [TumblerAttributeSlider<Tumbler>.Attribute] {
         switch tumbler.vertexor.shapeClass {
-        case .ngon(0):   return [.radius, .rotation]
+        case .ellipse: fallthrough
+        case .ngon(0): return [.radius, .rotation]
         default: assert(false)
         }
     }

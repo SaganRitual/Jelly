@@ -35,7 +35,8 @@ struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
         switch attribute {
         case .anchorPointR: return Binding(get: { tumbler.space.anchorPoint.r }, set: { tumbler.space.anchorPoint.r = $0 })
         case .anchorPointT: return Binding(get: { tumbler.space.anchorPoint.t }, set: { tumbler.space.anchorPoint.t = $0 })
-        case .positionR:    return Binding(get: { tumbler.space.position.r }, set: { tumbler.space.position.r = $0 })
+        case .positionR:    return Binding(get: { tumbler.space.position.r }, set: {
+            tumbler.space.position.r = $0 })
         case .positionT:    return Binding(get: { tumbler.space.position.t }, set: { tumbler.space.position.t = $0 })
         case .radius:       return Binding(get: { tumbler.space.radius }, set: { tumbler.space.radius = $0 })
         case .rotation:     return Binding(get: { tumbler.space.rotation }, set: { tumbler.space.rotation = $0 })

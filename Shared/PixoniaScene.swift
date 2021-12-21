@@ -60,17 +60,26 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         _scenario = ObservedObject(wrappedValue: scenario)
 
         super.init(size: CGSize(width: 1024, height: 1024))
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.anchorPoint = .anchorAtCenter
         self.scaleMode = .aspectFit
         self.backgroundColor = .clear
     }
 
     override func didMove(to view: SKView) {
-        railSettingsObservers = scenario.rails.map { $0.$space.sink { _ in self.railSettingsChanged = true } }
+        railSettingsObservers = scenario.rails.map { $0.$space.sink { [weak self] _ in
+            self?.railSettingsChanged = true
+        } }
+
         railSelectionObserver = scenario.$railSelection.sink { _ in self.railSelectionChanged  = true }
 
-        tumblerSettingsObservers = scenario.tumblers.map { $0.$space.sink { _ in self.tumblerSettingsChanged = true } }
-        tumblerSelectionObserver = scenario.$shapeSelection.sink { _ in self.tumblerSelectionChanged  = true }
+        tumblerSettingsObservers = scenario.tumblers.enumerated().map { ix, tumbler in tumbler.$space.sink {
+            [weak self] _ in
+            self?.tumblerSettingsChanged = true
+        } }
+
+        tumblerSelectionObserver = scenario.$shapeSelection.sink { [weak self] _ in
+            self?.tumblerSelectionChanged  = true
+        }
 
         railSelectionChanged = true
         railSettingsChanged = true
@@ -111,6 +120,9 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         guard tumblerSelectionChanged else { return }
 
         switch scenario.editingTumbler.vertexor.shapeClass {
+        case .ellipse:
+            installCircleTumblerSprite()
+
         case .ngon(0):
             rotationStop = 0
             installLineTumblerSprite()
@@ -125,6 +137,8 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         guard tumblerSettingsChanged else { return }
 
         switch scenario.editingTumbler.vertexor.shapeClass {
+        case .ellipse:
+            tumblerSprite.setScale(scenario.editingTumbler.space.radius)
         case .ngon(0):
             tumblerSprite.setScale(scenario.editingTumbler.space.radius)
         default:
@@ -133,7 +147,26 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
 
         tumblerSprite.zRotation = -scenario.editingTumbler.space.rotation
 
-        setPositionX()
+        let px = abs(scenario.editingTumbler.space.position.r)
+        let sx_ = px / scenario.editingTumbler.space.position.r
+        let sx = sx_.isFinite ? sx_ : 0.0
+
+        let fraction = px - Double(Int(px))
+        let fudger = Int(px + 1) % 2
+        let normalX = sx * (Double(fudger) - 1 + fraction)
+
+        print(
+            "Position:"
+            + " r = \(self.scenario.editingTumbler.space.position.r.as3())"
+            + " fudger = \(fudger)"
+            + " fraction = \(fraction.as3())"
+            + " normalX = \(normalX.as3())"
+        )
+
+        tumblerSprite.position = CGPoint(
+            x: normalX * self.size.width / 2.0,
+            y: scenario.editingTumbler.space.radius * self.size.width / 2.0
+        )
 
         tumblerSettingsChanged = false
     }
@@ -159,67 +192,6 @@ extension Double {
 }
 
 private extension PixoniaScene {
-    func setAnchorX() -> Bool {
-        var anchorDidChange = false
-
-        // We're between stops; anchor doesn't change
-        if(rotationStop..<nextRotationStop)
-            .contains(scenario.editingTumbler.space.rotation) { return anchorDidChange }
-
-        anchorDidChange = true
-
-        if abs(scenario.editingTumbler.space.rotation - rotationStop) <
-            abs(scenario.editingTumbler.space.rotation - nextRotationStop) {
-            rotationStop -= .pi
-            scenario.editingTumbler.space.position.r -= scenario.editingTumbler.space.radius
-        } else {
-            rotationStop = nextRotationStop
-            scenario.editingTumbler.space.position.r += scenario.editingTumbler.space.radius
-        }
-
-        tumblerSprite.position.x = scenario.editingTumbler.space.position.r * self.size.width
-
-        scenario.editingTumbler.space.anchorPoint = UCPoint(
-            r: scenario.editingTumbler.space.anchorPoint.r * -1,
-            t: scenario.editingTumbler.space.anchorPoint.t
-        )
-
-        tumblerSprite.anchorPoint.x = (tumblerSprite.anchorPoint.x == 0.0) ? 1.0 : 0.0
-        return anchorDidChange
-    }
-
-    func setPositionX() {
-        var X = 0.0
-        defer {
-            v1.position.x = railSprite.convert(CGPoint(x: X, y: 0), to: self).x
-            v2.position.x = railSprite.position.x + railSprite.size.width / 2
-            v1.zRotation = .pi / 2
-            v2.zRotation = .pi / 2
-        }
-
-        let anchorDidChange = setAnchorX()
-
-        // If we didn't change the anchor, we need to check for rotating
-        // beyond the ends of the rail.
-        let B = .pi - scenario.editingTumbler.space.rotation
-        let L = scenario.editingTumbler.space.radius * 2 * cos(B)
-
-        if tumblerSprite.anchorPoint.x == 1 {
-            X = tumblerSprite.position.x + L * self.size.width / 2
-        } else {
-            X = tumblerSprite.position.x - L * self.size.width / 2
-        }
-
-        // If we changed the anchor, we changed the position along with it.
-        if anchorDidChange { return }
-
-//        if X > scenario.editingRail.space.radius {
-//            scenario.editingTumbler.space.position.r = -scenario.editingRail.space.radius - L
-//        }
-    }
-}
-
-private extension PixoniaScene {
     func installCircleSprite() {
         let sprite = SpritePool.spokeRings.makeSprite()
         sprite.size = self.size
@@ -230,6 +202,16 @@ private extension PixoniaScene {
         self.addChild(sprite)
     }
 
+    func installCircleTumblerSprite() {
+        let sprite = SpritePool.spokeRings.makeSprite()
+        sprite.size = self.size
+        sprite.color = SKColor(Color.shizzabrick)
+
+        tumblerSprite?.removeFromParent()
+        tumblerSprite = sprite
+        railSprite.addChild(sprite)
+    }
+
     func installLineTumblerSprite() {
         let sprite = SpritePool.lines.makeSprite()
         sprite.color = SKColor(Color.shizzabrick)
@@ -237,14 +219,6 @@ private extension PixoniaScene {
         tumblerSprite?.removeFromParent()
         tumblerSprite = sprite
         railSprite.addChild(sprite)
-
-        v1 = SpritePool.lines.makeSprite()
-        v1.color = SKColor(Color.salmonzilla)
-        self.addChild(v1)
-
-        v2 = SpritePool.lines.makeSprite()
-        v2.color = SKColor(Color.velvetpresley)
-        self.addChild(v2)
     }
 
     func installLineRailSprite() {

@@ -4,7 +4,7 @@ import SwiftUI
 
 class Scenario: ObservableObject {
     @Published var railSelection = "minus"
-    @Published var shapeSelection = "minus"
+    @Published var shapeSelection = "circle"
 
     @Published var rails: [Rail] = [
         Rail(.line), Rail(.circle)
@@ -34,8 +34,14 @@ class Scenario: ObservableObject {
 
     init() {
         tumblers.forEach {
-            $0.space.radius = 0.125
+            $0.space.radius = 0.42
             $0.space.rotation = .pi / 2.0
+
+            $0.postInit()   // Activate positioner
+        }
+
+        rails.forEach {
+            $0.space.radius = 0.75
         }
     }
 }

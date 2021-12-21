@@ -1,8 +1,9 @@
 // We are a way for the cosmos to know itself. -- C. Sagan
 
 import CoreGraphics
+import Foundation
 
-struct UCPoint {
+class UCPoint {
     var r = 0.0
     var t = 0.0
 
@@ -13,7 +14,7 @@ struct UCPoint {
     // Although this is necessary for talking to SpriteKit
     var cgPoint: CGPoint { CGPoint(x: x, y: y) }
 
-    static let zero = UCPoint(r: 0.0, t: 0.0)
+    static var zero: UCPoint { UCPoint(r: 0.0, t: 0.0) }
 
     init(r: Double, t: Double) { self.r = r; self.t = t }
 }
@@ -27,6 +28,10 @@ extension UCPoint: CustomDebugStringConvertible {
 }
 
 extension UCPoint: Hashable {
+    static func == (lhs: UCPoint, rhs: UCPoint) -> Bool {
+        lhs.r == rhs.r && lhs.t == rhs.t
+    }
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(r)
         hasher.combine(t)
@@ -39,14 +44,14 @@ struct UCSpace {
     var radius = 1.0
     var rotation = 0.0
 
-    static let unit = UCSpace(radius: 1.0, rotation: 0.0)
+    static var unit: UCSpace { UCSpace(radius: 1.0, rotation: 0.0) }
 
     var diameter: Double { 2 * radius }
 }
 
 extension UCSpace: CustomDebugStringConvertible {
     var debugDescription: String {
-        "UCSpace(r: \(zeroish(radius)), t: \(zeroish(rotation))) anchor \(anchorPoint)"
+        "UCSpace(r: \(zeroish(radius)), t: \(zeroish(rotation))) position \(position) anchor \(anchorPoint)"
     }
 }
 
