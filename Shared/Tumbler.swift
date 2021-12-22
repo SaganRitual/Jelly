@@ -21,6 +21,7 @@ class Tumbler: HasUnitCircleSpace {
             // Ignore notifications that we changed the position...in a
             // function called setPosition(). We know already.
             .removeDuplicates(by: { $0.rotation == $1.rotation })
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in self!.setPosition() })
     }
 

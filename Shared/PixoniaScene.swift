@@ -70,12 +70,15 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
             self?.railSettingsChanged = true
         } }
 
-        railSelectionObserver = scenario.$railSelection.sink { _ in self.railSelectionChanged  = true }
+        railSelectionObserver = scenario.$railSelection.sink { [weak self] _ in
+            self?.railSelectionChanged  = true
+        }
 
-        tumblerSettingsObservers = scenario.tumblers.enumerated().map { ix, tumbler in tumbler.$space.sink {
-            [weak self] _ in
-            self?.tumblerSettingsChanged = true
-        } }
+        tumblerSettingsObservers = scenario.tumblers.enumerated().map { ix, tumbler in
+            tumbler.$space
+                .collect(2)
+                .sink { [weak self] _ in self?.tumblerSettingsChanged = true }
+        }
 
         tumblerSelectionObserver = scenario.$shapeSelection.sink { [weak self] _ in
             self?.tumblerSelectionChanged  = true
@@ -154,14 +157,6 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         let fraction = px - Double(Int(px))
         let fudger = Int(px + 1) % 2
         let normalX = sx * (Double(fudger) - 1 + fraction)
-
-        print(
-            "Position:"
-            + " r = \(self.scenario.editingTumbler.space.position.r.as3())"
-            + " fudger = \(fudger)"
-            + " fraction = \(fraction.as3())"
-            + " normalX = \(normalX.as3())"
-        )
 
         tumblerSprite.position = CGPoint(
             x: normalX * self.size.width / 2.0,
