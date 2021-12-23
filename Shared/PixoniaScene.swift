@@ -174,11 +174,13 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
 
         switch scenario.editingTumbler.vertexor.shapeClass {
         case .ellipse:
-            let shifted = scenario.editingTumbler.space.position.r + 1.0
+            let positionX = scenario.editingTumbler.space.position.r
+            let shifted = positionX + 1.0
             let t1 = Int(shifted / 2)
             let t2 = Int(Double(t1) * 2)
             let fraction = shifted - Double(t2)
-            let normalX = fraction - 1.0
+
+            let normalX = positionX < -1 ? fraction + 1.0 : fraction - 1.0
 
             tumblerSprite.position = CGPoint(
                 x: normalX * self.size.width / 2.0,
