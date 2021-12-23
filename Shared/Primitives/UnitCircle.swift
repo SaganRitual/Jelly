@@ -3,7 +3,7 @@
 import CoreGraphics
 import Foundation
 
-class UCPoint {
+struct UCPoint {
     var r = 0.0
     var t = 0.0
 

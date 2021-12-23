@@ -93,6 +93,36 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
         sceneUpdateRequired = true
     }
 
+    func getNormalX() -> Double {
+        switch scenario.editingTumbler.vertexor.shapeClass {
+        case .ellipse(0):
+            return getNormalXWheel(for: scenario.editingTumbler.space.position.r)
+        case .ngon(0):
+            return getNormalXStick(for: scenario.editingTumbler.space.position.r)
+
+        default: fatalError()
+        }
+    }
+
+    func getNormalXStick(for rotation: Double) -> Double {
+        let truncated = Int(scenario.editingTumbler.space.rotation / .pi)
+        let translated = scenario.editingTumbler.space.rotation >= 0 ? truncated : truncated - 1
+        let quantizedRotation = Double(translated) * .pi
+
+        return getNormalXWheel(for: quantizedRotation)
+    }
+
+    func getNormalXWheel(for rotation: Double) -> Double {
+        let px = abs(rotation)
+        let sx_ = px / rotation
+        let sx = sx_.isFinite ? sx_ : 1.0
+
+        let fraction = px - Double(Int(px))
+        let quantizer = Int(px + 1) % 2
+
+        return sx * (Double(quantizer) - 1 + fraction)
+    }
+
     func updateRailSpriteForSelection() {
         guard railSelectionChanged else { return }
 
@@ -139,29 +169,44 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
     func updateTumblerSpriteForSettings() {
         guard tumblerSettingsChanged else { return }
 
-        switch scenario.editingTumbler.vertexor.shapeClass {
-        case .ellipse:
-            tumblerSprite.setScale(scenario.editingTumbler.space.radius)
-        case .ngon(0):
-            tumblerSprite.setScale(scenario.editingTumbler.space.radius)
-        default:
-            assert(false)
-        }
-
+        tumblerSprite.setScale(scenario.editingTumbler.space.radius)
         tumblerSprite.zRotation = -scenario.editingTumbler.space.rotation
 
-        let px = abs(scenario.editingTumbler.space.position.r)
-        let sx_ = px / scenario.editingTumbler.space.position.r
-        let sx = sx_.isFinite ? sx_ : 0.0
+        switch scenario.editingTumbler.vertexor.shapeClass {
+        case .ellipse:
+            let shifted = scenario.editingTumbler.space.position.r + 1.0
+            let t1 = Int(shifted / 2)
+            let t2 = Int(Double(t1) * 2)
+            let fraction = shifted - Double(t2)
+            let normalX = fraction - 1.0
 
-        let fraction = px - Double(Int(px))
-        let fudger = Int(px + 1) % 2
-        let normalX = sx * (Double(fudger) - 1 + fraction)
+            tumblerSprite.position = CGPoint(
+                x: normalX * self.size.width / 2.0,
+                y: scenario.editingTumbler.space.radius * self.size.width / 2.0
+            )
 
-        tumblerSprite.position = CGPoint(
-            x: normalX * self.size.width / 2.0,
-            y: scenario.editingTumbler.space.radius * self.size.width / 2.0
-        )
+        case .ngon(0):
+            let truncated = Int(scenario.editingTumbler.space.rotation / .pi)
+            let translated = scenario.editingTumbler.space.rotation >= 0 ? truncated : truncated - 1
+            let quantizedRotation = Double(translated) * .pi
+
+            let normalX_ = getNormalXWheel(for: quantizedRotation)
+            let translatedAgain: Double
+            if translated % 2 == 0 {
+                translatedAgain = 0.0
+            } else {
+                if translated >= 0 { translatedAgain = 4.0 }
+                else               { translatedAgain = -4.0 }
+            }
+
+            let normalX = normalX_ + translatedAgain * scenario.editingTumbler.space.radius
+
+            tumblerSprite.anchorPoint = translated % 2 == 0 ? .anchorDueEast : .anchorDueWest
+            tumblerSprite.position = CGPoint(x: normalX * self.size.width / 2.0, y: 0)
+
+        default:
+            fatalError()
+        }
 
         tumblerSettingsChanged = false
     }
@@ -179,11 +224,6 @@ class PixoniaScene: SKScene, SKSceneDelegate, ObservableObject {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-extension Double {
-    static let halfPi = Double.pi / 2
-    static let twoPi = Double.pi * 2.0
 }
 
 private extension PixoniaScene {
@@ -210,7 +250,8 @@ private extension PixoniaScene {
     func installLineTumblerSprite() {
         let sprite = SpritePool.lines.makeSprite()
         sprite.color = SKColor(Color.shizzabrick)
-        sprite.anchorPoint = .anchorDueEast
+        sprite.size.width = self.size.width
+
         tumblerSprite?.removeFromParent()
         tumblerSprite = sprite
         railSprite.addChild(sprite)

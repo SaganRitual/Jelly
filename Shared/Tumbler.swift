@@ -11,6 +11,8 @@ class Tumbler: HasUnitCircleSpace {
     @Published var vertexor: Vertexor
 
     var rotationObserver: AnyCancellable!
+    var previousRotation: Double?
+    var runningDelta = 0.0
 
     init(_ shapeClass: ShapeChooser.ShapeClass) {
         vertexor = Vertexor(shapeClass: shapeClass)
@@ -18,15 +20,19 @@ class Tumbler: HasUnitCircleSpace {
 
     func postInit() {
         rotationObserver = $space
-            // Ignore notifications that we changed the position...in a
-            // function called setPosition(). We know already.
-            .removeDuplicates(by: { $0.rotation == $1.rotation })
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in self!.setPosition() })
+            .sink(receiveValue: { [weak self] in self!.setPosition($0.rotation) })
     }
 
-    func setPosition() {
-        let arcLength = space.radius * (space.rotation - .pi / 2.0)
-        space.position.r = arcLength
+    func setPosition(_ newRotation: Double) {
+        defer { previousRotation = newRotation }
+        guard let previousRotation = previousRotation else { return }
+
+        let delta = newRotation - previousRotation
+        runningDelta += delta
+        if delta == 0 { return }
+
+        let arcLength = space.radius * delta
+        space.position.r += arcLength
     }
 }

@@ -11,7 +11,7 @@ struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
     @ObservedObject var scenario: Scenario
 
     enum Attribute: Int {
-        case anchorPointR, anchorPointT, positionR, positionT, radius, rotation
+        case anchorPointR, anchorPointT, radius, rotation
     }
 
     let attribute: Attribute
@@ -25,8 +25,6 @@ struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
     var descriptors: [SliderDescriptor] = [
         SliderDescriptor(attribute: .anchorPointR, label: "Anchor r", range: (-1.0)...(1.0)),
         SliderDescriptor(attribute: .anchorPointT, label: "Anchor θ", range: (-2.0 * .tau)...(2.0 * .tau)),
-        SliderDescriptor(attribute: .positionR, label: "Position r", range: (-1.0)...(1.0)),
-        SliderDescriptor(attribute: .positionT, label: "Position θ", range: (-2.0 * .tau)...(2.0 * .tau)),
         SliderDescriptor(attribute: .radius, label: "Scale", range: (-1.0)...(1.0)),
         SliderDescriptor(attribute: .rotation, label: "Rotation", range: (-2.0 * .tau)...(2.0 * .tau)),
     ]
@@ -35,9 +33,6 @@ struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
         switch attribute {
         case .anchorPointR: return Binding(get: { tumbler.space.anchorPoint.r }, set: { tumbler.space.anchorPoint.r = $0 })
         case .anchorPointT: return Binding(get: { tumbler.space.anchorPoint.t }, set: { tumbler.space.anchorPoint.t = $0 })
-        case .positionR:    return Binding(get: { tumbler.space.position.r }, set: {
-            tumbler.space.position.r = $0 })
-        case .positionT:    return Binding(get: { tumbler.space.position.t }, set: { tumbler.space.position.t = $0 })
         case .radius:       return Binding(get: { tumbler.space.radius }, set: { tumbler.space.radius = $0 })
         case .rotation:     return Binding(get: { tumbler.space.rotation }, set: { tumbler.space.rotation = $0 })
         }
@@ -48,8 +43,6 @@ struct TumblerAttributeSlider<T: HasUnitCircleSpace>: View {
         switch attribute {
         case .anchorPointR: s = tumbler.space.anchorPoint.r
         case .anchorPointT: s = tumbler.space.anchorPoint.t
-        case .positionR: s = tumbler.space.position.r
-        case .positionT: s = tumbler.space.position.t
         case .radius: s = tumbler.space.radius
         case .rotation: s = tumbler.space.rotation
         }

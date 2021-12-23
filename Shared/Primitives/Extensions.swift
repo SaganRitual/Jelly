@@ -163,7 +163,9 @@ extension CGFloat {
 }
 
 extension Double {
-    static let tau = Double.pi * 2
+    static let halfPi = Double.pi / 2
+    static let tau =    twoPi
+    static let twoPi =  Double.pi * 2.0
 
     func asString(decimals: Int, fixedWidth: Int? = nil) -> String {
         let fw = (fixedWidth == nil) ? "" : "\(fixedWidth!)"
